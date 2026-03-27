@@ -62,6 +62,194 @@ My wallet is 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045, give me digest
 - 🎯 **Tailored Recommendations | 专属推荐**: News related to your holdings
 - 💡 **Custom Advice | 定制建议**: Suggestions for your portfolio
 
+## Examples | 示例
+
+### User Profile Example | 用户画像示例
+
+<details>
+<summary>Click to expand | 点击展开</summary>
+
+**Wallet | 钱包**: `0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045`
+
+```json
+{
+  "summary": "Based on on-chain data analysis, your total assets are approximately $210,100, mainly distributed on Plasma (~90%) and Ethereum (~7%). You currently hold USDT (~$190K) with high concentration, small ETH allocation, and maintain ~$8.9K in Pendle V2 locked and staked positions. Your asset structure shows extreme defensiveness: the vast majority of funds remain in stablecoin form, indicating you're not rushing to chase market movements, but waiting for clear macro turning points or higher certainty yield windows.",
+  
+  "archetype_tags": [
+    "Extremely conservative on-chain cash holder",
+    "Pendle fixed-income strategy expert", 
+    "Early liquidity waiter in new ecosystems"
+  ],
+  
+  "asset_overview": {
+    "total_value": 210100.32,
+    "top_holdings": [
+      {"symbol": "USDT", "value": 190143.64, "percentage": 90.5},
+      {"symbol": "ETH", "value": 7456.61, "percentage": 3.6},
+      {"symbol": "PENDLE", "value": 8947.32, "percentage": 4.3}
+    ]
+  },
+  
+  "interest_radar": "You should focus on: (1) Pendle V2 new maturity markets, yield curve changes and potential competitors (Spectra, Element); (2) Stablecoin systemic risks, especially USDT custody and liquidity safety on new chains (Plasma); (3) More defensive on-chain fixed income or RWA products like Ondo, Maple, Backed; (4) Plasma ecosystem infrastructure progress.",
+  
+  "estimated_timezone": {
+    "region": "East Asia",
+    "timezone": "UTC+8",
+    "confidence": "high"
+  }
+}
+```
+
+**中文版**:
+
+```json
+{
+  "summary": "基于链上数据分析，你目前的总资产约为 $210,100，主要分布在 Plasma（约 90%）和 Ethereum（约 7%）。你当前高度集中持有 USDT（约 $190K），少量配置 ETH，并在 Pendle V2 中保有约 $8.9K 的锁仓与质押仓位。你的资产结构呈现出极端防御性：绝大部分资金停留在稳定币形态，说明你并不急于博取行情，而是在等待明确的宏观拐点或更高确定性的收益窗口。",
+  
+  "archetype_tags": [
+    "极端稳健的链上现金持有者",
+    "精通 Pendle 的固定收益策略玩家",
+    "新生态早期流动性等待者"
+  ],
+  
+  "interest_radar": "你应该关注：(1) Pendle V2 的新到期市场、收益曲线变化及潜在竞品（如 Spectra、Element）；(2) 稳定币体系的系统性风险，尤其是 USDT 在新链（Plasma）上的托管与流动性安全；(3) 更偏防御型的链上固收或类 RWA 产品，如 Ondo、Maple、Backed；(4) Plasma 生态的基础设施进展。"
+}
+```
+
+</details>
+
+### Public Digest Example | 公共日报示例
+
+<details>
+<summary>Click to expand | 点击展开</summary>
+
+```markdown
+# 📅 J4Y Web3 Digest | 2026-03-27
+
+## 📊 Market Overview
+
+**Market Prices**:
+- **BTC**: $66,662 (-3.75%)
+- **ETH**: $1,990 (-3.72%)
+
+**Market Sentiment**:
+- **Fear & Greed Index**: 13 / 100 (Extreme Fear)
+
+💡 **Market Interpretation**: Deleveraging still in progress, institutional funds 
+have shifted to ETH and RWA, sentiment in cautious gaming phase under extreme fear.
+
+---
+
+## 📰 Macro News
+
+### 🔥 Theme 1: ETH Supply Continues to Contract
+Exchange ETH balance hits 10-year low, staking and on-chain transfers at all-time high. 
+Short-term volatility amplified by early whale selling, but mid-term pricing logic 
+shifting to "scarcity + yield asset".
+
+### 🔥 Theme 2: Crypto Assets Enter Housing Finance System
+Coinbase partners with Better.com to launch Fannie Mae-backed crypto mortgage loans. 
+BTC/USDC becomes first crypto asset accepted as down payment in US mainstream housing finance.
+
+### 🔥 Theme 3: RWA and On-chain Financial Infrastructure Landing
+BlackRock BUIDL, tokenized US stocks, energy asset tokenization advancing simultaneously. 
+RWA moving from pilot to scalable application, DeFi valuation anchors changing.
+
+---
+
+## 📡 Global KOL Sentiment
+
+**Overall Sentiment Index: 4.3/10 – Bearish but approaching turning point**
+
+**Global Sentiment Distribution**:
+- 🟢 Bullish: 32% (CN 28% | EN 37%)
+- 🔴 Bearish: 41% (CN 46% | EN 35%)
+- ⚪ Neutral: 27% (CN 26% | EN 28%)
+
+**Key Findings**:
+- Chinese circle showing emotional selling
+- English circle focusing on ETF, whale, and options data
+- Both agree: deleveraging not fully complete
+
+---
+
+## 🎯 Want Personalized Recommendations?
+
+Provide your wallet address to get personalized digest based on on-chain behavior.
+```
+
+</details>
+
+### Personalized Digest Example | 个性化日报示例
+
+<details>
+<summary>Click to expand | 点击展开</summary>
+
+```markdown
+# 📅 J4Y Personalized Digest | 2026-03-27
+
+## 👤 Your Investment Profile | 你的投资概况
+
+**Total Assets | 总资产**: $210,100
+
+**Asset Distribution | 资产分布**:
+- Plasma: $189,000 (90%)
+- Ethereum: $14,700 (7%)
+- BNB Chain: $6,400 (3%)
+
+**Core Holdings | 核心持仓**: $USDT, $ETH, Pendle, $BNB
+
+**Investor Profile | 投资者画像**: Extremely conservative on-chain cash holder, DeFi fixed-income player
+
+---
+
+## 📊 Market Overview | 市场概览
+
+**BTC**: $66,266 (-4.72%) | **ETH**: $1,984 (-4.55%)
+
+**Fear & Greed Index**: 13 / 100 (Extreme Fear | 极度恐慌)
+
+---
+
+## 🎯 Your Personalized Intel | 你的专属情报
+
+### USDT
+USDT launches KPMG Big Four audit, significantly reducing stablecoin credit risk. 
+With 90% of your assets in USDT, this is a systemic positive for you.
+
+USDT启动KPMG四大审计，显著降低稳定币信用风险。你90%资产为USDT，该事件对你是系统性利好。
+
+### ETH
+ETH breaks below $2k, but exchange inventory at all-time low, whales accumulating at lows. 
+Your position is small, better suited as primary offensive asset when risk appetite returns.
+
+ETH跌破2k，但交易所存量创新低，鲸鱼低位承接。你仓位较小，当前更适合作为未来风险开启时的首选进攻资产。
+
+### Pendle
+Pendle strengthens its fixed-income infrastructure positioning. Under tight macro conditions, 
+maintaining short-duration PT with maturity management strategy is optimal.
+
+Pendle强化其固定收益基础设施定位。宏观偏紧下，维持短久期PT、到期管理策略更优。
+
+---
+
+## 💡 Today's Suggestions | 今日建议
+
+1. Maintain USDT as core position, focus on KPMG audit asset structure details
+2. Don't add ETH yet, record key price zones as backup for future risk-on
+3. Continue short-duration PT strategy for Pendle, exit at maturity
+
+---
+
+## ⚠️ Risk Alerts | 风险提示
+
+1. 🚨 [HIGH] Macro liquidity tightening + geopolitics may trigger new deleveraging
+2. 🚨 [HIGH] New chain Plasma may see stablecoin liquidity discount in extreme conditions
+3. ⚠️ [MED] Continued ETF outflows suppress BTC/ETH mid-term performance
+```
+
+</details>
+
 ## Scheduled Delivery (Optional) | 定时推送（可选）
 
 Want daily digest automatically? Set up Telegram delivery:
