@@ -1,0 +1,24 @@
+{
+  "name": "web3-daily",
+  "version": "1.0.0",
+  "description": "Web3 Daily Digest - Get personalized crypto research based on your on-chain behavior. Supports public digest (macro news + KOL sentiment + market data) or personalized digest based on wallet address.",
+  "author": "alexwang",
+  "license": "MIT",
+  "permissions": [
+    "network"
+  ],
+  "entryPoint": "SKILL.md",
+  "tags": [
+    "web3",
+    "crypto",
+    "defi",
+    "research",
+    "digest",
+    "news",
+    "blockchain",
+    "wallet",
+    "portfolio"
+  ],
+  "repository": "https://github.com/alexander10011/web3-daily",
+  "homepage": "https://github.com/alexander10011/web3-daily"
+}

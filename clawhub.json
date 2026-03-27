@@ -1,0 +1,25 @@
+{
+  "tagline": "Personalized Web3 research digest based on your on-chain behavior",
+  "description": "Web3 Daily provides AI-powered crypto research digests tailored to your investment profile. Simply provide your wallet address to get personalized insights based on your on-chain holdings, trading history, and DeFi positions.\n\nFeatures:\n- Public Digest: Macro news, KOL sentiment analysis, market overview\n- Personalized Digest: Custom recommendations based on your portfolio\n- User Profile: Deep analysis of your on-chain behavior and investment style\n- Telegram Delivery: Optional scheduled push notifications\n\nNo API keys required - all infrastructure is managed server-side.",
+  "category": "data",
+  "tags": [
+    "web3",
+    "crypto",
+    "defi",
+    "research",
+    "news",
+    "blockchain",
+    "wallet",
+    "portfolio",
+    "investment",
+    "trading"
+  ],
+  "pricing": "free",
+  "support_url": "https://github.com/alexander10011/web3-daily/issues",
+  "homepage": "https://github.com/alexander10011/web3-daily",
+  "screenshots": [
+    "screenshots/public-digest.png",
+    "screenshots/personalized-digest.png",
+    "screenshots/user-profile.png"
+  ]
+}
