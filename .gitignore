@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Environment files (contains sensitive data)
+.env
+*.env.local
+
+# User config (contains personal settings)
+# Note: ~/.j4y/ is user's local config, not in this repo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build
+dist/
+build/
