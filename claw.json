@@ -1,11 +1,13 @@
 {
   "name": "web3-daily",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Web3 Daily Digest - Get personalized crypto research based on your on-chain behavior. Supports public digest (macro news + KOL sentiment + market data) or personalized digest based on wallet address.",
   "author": "alexwang",
   "license": "MIT",
   "permissions": [
-    "network"
+    "network",
+    "filesystem",
+    "cron"
   ],
   "entryPoint": "SKILL.md",
   "tags": [
@@ -20,5 +22,48 @@
     "portfolio"
   ],
   "repository": "https://github.com/alexander10011/web3-daily",
-  "homepage": "https://github.com/alexander10011/web3-daily"
+  "homepage": "https://github.com/alexander10011/web3-daily",
+  "config": {
+    "paths": [
+      "~/.j4y/config.json",
+      "~/.j4y/.env"
+    ],
+    "env": [
+      {
+        "name": "TELEGRAM_BOT_TOKEN",
+        "description": "Telegram bot token for scheduled delivery (optional, only needed for Telegram push)",
+        "required": false
+      }
+    ]
+  },
+  "privacy": {
+    "dataCollection": [
+      {
+        "type": "wallet_address",
+        "purpose": "Generate on-chain profile and personalized digest",
+        "storage": "Server-side only, not stored locally",
+        "retention": "24-hour cache for performance"
+      }
+    ],
+    "externalServices": [
+      {
+        "name": "J4Y Backend API",
+        "url": "https://j4y-production.up.railway.app",
+        "purpose": "Process wallet data and generate digests",
+        "dataShared": ["wallet_address", "language_preference"]
+      }
+    ],
+    "localStorage": [
+      {
+        "path": "~/.j4y/config.json",
+        "purpose": "User preferences (language, timezone, delivery settings)",
+        "sensitive": false
+      },
+      {
+        "path": "~/.j4y/.env",
+        "purpose": "Telegram bot token (only if scheduled delivery enabled)",
+        "sensitive": true
+      }
+    ]
+  }
 }

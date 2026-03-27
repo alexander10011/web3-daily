@@ -4,13 +4,40 @@ description: >-
   Web3 personalized research digest service. Provides public digest (macro news + KOL sentiment + market data) 
   or personalized digest based on wallet address. Use when user asks for Web3 news, requests digest, 
   provides wallet address, or says /web3. No API key required.
+permissions:
+  - network
+  - filesystem (optional, only for Telegram delivery)
+  - cron (optional, only for scheduled delivery)
+config:
+  - path: ~/.j4y/config.json (optional)
+  - path: ~/.j4y/.env (optional, for Telegram token)
+env:
+  - TELEGRAM_BOT_TOKEN (optional, only for Telegram delivery)
 ---
 
 # Web3 Daily
 
 Provides Web3 research digest service with two modes:
-- **Public**: Get general Web3 digest without any input
+- **Public**: Get general Web3 digest without any input (no personal data required)
 - **Personalized**: Input wallet address to get digest based on on-chain profile
+
+## ⚠️ Privacy Notice (IMPORTANT - Read Before Using Personalized Mode)
+
+**Public Mode**: No personal data is collected or transmitted. Safe to use without any privacy concerns.
+
+**Personalized Mode**: When you provide a wallet address:
+1. Your wallet address is sent to `https://j4y-production.up.railway.app` (our backend server)
+2. The server calls DeBank API to fetch your on-chain data (balances, tokens, protocols, transactions)
+3. An AI-generated profile and personalized digest is returned
+4. **Data Retention**: Wallet profiles are cached for 24 hours for performance, then refreshed
+5. **No Permanent Storage**: We do not permanently store or sell your wallet data
+
+**Scheduled Delivery (Optional)**: If you enable Telegram push:
+- Creates `~/.j4y/config.json` (stores preferences, not sensitive)
+- Creates `~/.j4y/.env` (stores your Telegram bot token - keep this secure)
+- Adds a cron job to run daily delivery script
+
+**You can always use Public Mode if you prefer not to share your wallet address.**
 
 ## API Endpoint
 
