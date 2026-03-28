@@ -1,25 +1,21 @@
 {
-  "tagline": "Personalized Web3 research digest based on your on-chain behavior",
-  "description": "Web3 Daily provides AI-powered crypto research digests tailored to your investment profile.\n\n## Features\n- **Public Digest**: Macro news, KOL sentiment analysis, market overview (no wallet required)\n- **Personalized Digest**: Custom recommendations based on your portfolio\n- **User Profile**: Deep analysis of your on-chain behavior and investment style\n- **Telegram Delivery**: Optional scheduled push notifications\n\n## Privacy & Data Usage\n- **Public Mode**: No personal data required or collected\n- **Personalized Mode**: Wallet address is sent to our backend API (j4y-production.up.railway.app) to analyze on-chain data via DeBank API\n- **Local Storage**: Optional config files (~/.j4y/) only created if you enable Telegram delivery\n- **No Tracking**: We don't store wallet addresses permanently, only 24-hour cache for performance\n\n## Permissions Explained\n- `network`: Required to call the digest API\n- `filesystem`: Only used if you enable Telegram scheduled delivery (stores config in ~/.j4y/)\n- `cron`: Only used if you enable daily scheduled delivery\n\nNo API keys required for basic usage - all infrastructure is managed server-side.",
-  "category": "data",
-  "tags": [
+  "name": "web3-daily",
+  "version": "2.0.0",
+  "description": "Web3 Daily Digest - Get daily crypto research with macro news, KOL sentiment, and real-time market data. No personal data required. No API keys needed.",
+  "longDescription": "An AI-powered Web3 research digest that tracks crypto news from 170+ sources, monitors 50+ KOL Twitter accounts (Chinese + English), and provides real-time market data including BTC/ETH prices and Fear & Greed Index.\n\n## Privacy & Security\n\n- Zero personal data collected\n- No wallet address needed\n- No local files created\n- No API keys required\n- All traffic encrypted via HTTPS\n\n## What You Get\n\n- Real-time BTC/ETH prices and 24h change\n- Fear & Greed Index\n- 5-8 key macro news events\n- KOL sentiment analysis (Chinese + English)\n- Bilingual support (English/Chinese)",
+  "author": "Alex Wang",
+  "license": "MIT",
+  "repository": "https://github.com/alexander10011/web3-daily",
+  "homepage": "https://github.com/alexander10011/web3-daily",
+  "keywords": [
     "web3",
     "crypto",
+    "bitcoin",
+    "ethereum",
     "defi",
-    "research",
     "news",
-    "blockchain",
-    "wallet",
-    "portfolio",
-    "investment",
-    "trading"
-  ],
-  "pricing": "free",
-  "support_url": "https://github.com/alexander10011/web3-daily/issues",
-  "homepage": "https://github.com/alexander10011/web3-daily",
-  "screenshots": [
-    "screenshots/public-digest.png",
-    "screenshots/personalized-digest.png",
-    "screenshots/user-profile.png"
+    "digest",
+    "market",
+    "research"
   ]
 }
