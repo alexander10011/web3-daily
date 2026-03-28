@@ -14,6 +14,18 @@ An open-source AI Agent Skill that provides Web3 research digest service.
 
 ### Installation | 安装
 
+**One-line install (Recommended) | 一行命令安装（推荐）**:
+
+```bash
+npx skills add alexander10011/web3-daily
+```
+
+This automatically installs to all supported AI agents (Cursor, Claude Code, Codex, Windsurf, etc.)
+
+自动安装到所有支持的 AI Agent（Cursor、Claude Code、Codex、Windsurf 等）
+
+**Manual install | 手动安装**:
+
 ```bash
 # Cursor
 git clone https://github.com/alexander10011/web3-daily.git ~/.cursor/skills/web3-daily
