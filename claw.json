@@ -1,6 +1,6 @@
 {
   "name": "web3-daily",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Web3 Daily Digest - Get personalized crypto research based on your on-chain behavior. Supports public digest (macro news + KOL sentiment + market data) or personalized digest based on wallet address.",
   "author": "alexwang",
   "license": "MIT",
