@@ -17,9 +17,21 @@ env:
 
 # Web3 Daily
 
+> **🚨 IMPORTANT FOR AI AGENTS**: This skill requires ACTUAL API calls to function. You MUST execute the curl commands in the workflows below. DO NOT generate simulated/fake content. The backend at `https://j4y-production.up.railway.app` provides real-time data that you cannot replicate.
+
 Provides Web3 research digest service with two modes:
 - **Public**: Get general Web3 digest without any input (no personal data required)
 - **Personalized**: Input wallet address to get digest based on on-chain profile
+
+## How This Skill Works
+
+This skill connects to a live backend service that:
+1. Aggregates 170+ news sources every 6 hours
+2. Monitors 50+ KOL Twitter accounts (Chinese + English)
+3. Fetches real-time market data (BTC/ETH prices, Fear & Greed Index)
+4. Uses AI to generate comprehensive analysis
+
+**You cannot replicate this data by yourself. You MUST call the API.**
 
 ## ⚠️ Privacy Notice (IMPORTANT - Read Before Using Personalized Mode)
 
@@ -56,35 +68,66 @@ Use this skill when user message contains:
 
 ---
 
+## Language Support
+
+All APIs support bilingual output (Chinese / English). Use `language` parameter:
+- `"zh"` - Chinese (default)
+- `"en"` - English
+
+---
+
 ## Workflow A: Public Digest
 
 **Trigger**: User requests digest without providing wallet address
 
+### ⚠️ CRITICAL: You MUST execute the curl command below. DO NOT generate fake/simulated content.
+
 **Steps**:
 
-1. Tell user fetching latest news (first time ~45s, cached <2s)
+1. Tell user: "Fetching latest Web3 digest from J4Y backend..."
 
-2. Call public digest API:
+2. **MUST EXECUTE** this curl command (do not skip or simulate):
 ```bash
 curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/public" \
   -H "Content-Type: application/json" \
   -d '{"language": "zh"}'
 ```
 
-3. Parse `digest` field from response and display to user
+For English output:
+```bash
+curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/public" \
+  -H "Content-Type: application/json" \
+  -d '{"language": "en"}'
+```
 
-4. Add prompt at the end:
+3. Parse the JSON response and extract the `digest` field
+
+4. Display the EXACT content from `digest` field to user (do not modify or summarize)
+
+5. Add at the end:
    > 💡 Provide your wallet address to get personalized digest based on on-chain behavior
 
-**Response Format**:
+### Expected Response (real data, not example):
 ```json
 {
   "success": true,
-  "digest": "# 📅 J4Y Web3 Digest...",
+  "digest": "---\n\n# 📅 Web3 日报 | 2026-03-28\n\n---\n\n## 📊 市场概览\n\n**大盘行情**:\n- **BTC**: $66,118 (-3.89%)\n- **ETH**: $1,988 (-3.59%)\n\n**市场情绪**:\n- **恐惧&贪婪指数**: 12 / 100 (极度恐慌)\n\n...",
   "cached": true,
-  "generated_at": "2026-03-25T08:00:00Z"
+  "generated_at": "2026-03-28T10:00:00Z",
+  "language": "zh"
 }
 ```
+
+### ❌ DO NOT:
+- Generate your own digest content
+- Summarize or paraphrase the API response
+- Skip the API call and make up data
+- Return "example" or "simulated" content
+
+### ✅ MUST:
+- Execute the actual curl command
+- Return the exact `digest` content from API response
+- Include real BTC/ETH prices and Fear & Greed Index from the response
 
 ---
 
@@ -92,32 +135,50 @@ curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/public" \
 
 **Trigger**: User provides wallet address (starts with 0x, 42 characters)
 
+### ⚠️ CRITICAL: You MUST execute the curl command below. DO NOT generate fake/simulated content.
+
 **Steps**:
 
 1. Validate address format (starts with 0x, 42 characters, hexadecimal)
 
-2. Tell user:
-   - First-time profile generation takes ~30-50 seconds
-   - Personalized digest generation takes ~90-120 seconds
-   - Faster with cached profile
+2. Tell user: "Analyzing your on-chain behavior and generating personalized digest. First-time generation takes ~90-120 seconds, please wait..."
 
-3. Call personalized digest API:
+3. **MUST EXECUTE** this curl command with the user's actual wallet address:
 ```bash
 curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest" \
   -H "Content-Type: application/json" \
-  -d '{"wallet_address": "USER_WALLET_ADDRESS"}'
+  -d '{"wallet_address": "REPLACE_WITH_USER_WALLET", "language": "zh"}'
 ```
 
-4. Parse `digest` field from response and display to user
+For English output:
+```bash
+curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest" \
+  -H "Content-Type: application/json" \
+  -d '{"wallet_address": "REPLACE_WITH_USER_WALLET", "language": "en"}'
+```
 
-**Response Format**:
+4. Parse the JSON response and extract the `digest` field
+
+5. Display the EXACT content from `digest` field to user (do not modify or summarize)
+
+### Expected Response:
 ```json
 {
   "success": true,
-  "digest": "# 📅 J4Y Personalized Digest...",
-  "word_count": 3500
+  "digest": "# 📅 Personalized Digest for 0x...\n\n## Your Profile\n...",
+  "word_count": 3500,
+  "language": "zh"
 }
 ```
+
+### ❌ DO NOT:
+- Generate your own personalized content
+- Make up wallet holdings or transaction history
+- Skip the API call
+
+### ✅ MUST:
+- Execute the actual curl command with user's wallet address
+- Return the exact `digest` content from API response
 
 ---
 
@@ -125,20 +186,38 @@ curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest" \
 
 **Trigger**: User only wants to understand on-chain behavior, no digest needed
 
+### ⚠️ CRITICAL: You MUST execute the curl command below. DO NOT generate fake profile data.
+
 **Steps**:
 
-1. Call profile API:
+1. Tell user: "Analyzing your on-chain behavior, this takes ~30-50 seconds for first-time analysis..."
+
+2. **MUST EXECUTE** this curl command with the user's actual wallet address:
 ```bash
 curl -s -X POST "https://j4y-production.up.railway.app/api/v1/profile" \
   -H "Content-Type: application/json" \
-  -d '{"wallet_address": "USER_WALLET_ADDRESS"}'
+  -d '{"wallet_address": "REPLACE_WITH_USER_WALLET", "language": "zh"}'
 ```
 
-2. Extract and display key information from response:
-   - Total assets
-   - Active chains
-   - Top holdings
-   - Investment style
+For English output:
+```bash
+curl -s -X POST "https://j4y-production.up.railway.app/api/v1/profile" \
+  -H "Content-Type: application/json" \
+  -d '{"wallet_address": "REPLACE_WITH_USER_WALLET", "language": "en"}'
+```
+
+3. Parse the JSON response and extract `display_profile` field
+
+4. Display key information from the ACTUAL API response:
+   - `display_profile.summary` - Overall profile summary
+   - `display_profile.asset_overview` - Total assets and top holdings
+   - `display_profile.personality_brief` - Investment style
+   - `display_profile.interest_radar` - Areas of interest
+
+### ❌ DO NOT:
+- Make up wallet balances or holdings
+- Generate fake transaction history
+- Guess the user's investment style
 
 ---
 
