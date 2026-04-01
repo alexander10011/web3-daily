@@ -1,9 +1,9 @@
 ---
 name: web3-daily
-version: 2.1.2
+version: 2.2.0
 description: >-
-  Web3 public research digest service. Provides daily digest with macro news, KOL sentiment, 
-  and real-time market data (BTC/ETH prices, Fear & Greed Index). No personal data required. 
+  Web3 public research digest service. Provides daily digest with macro news, KOL sentiment,
+  and real-time market data (BTC/ETH prices, Fear & Greed Index). No personal data required.
   Use when user asks for Web3 news, crypto digest, or says /web3.
 author: Alex Wang
 repository: https://github.com/alexander10011/web3-daily
@@ -19,19 +19,29 @@ permissions:
 
 ## What You Get
 
-- 📊 **Real-time market data** — BTC/ETH prices, 24h change, Fear & Greed Index
-- 📰 **Macro news analysis** — 5-8 key events from 170+ sources
-- 📡 **KOL sentiment** — What Chinese + English crypto Twitter is saying
+- 📊 **Market Overview** — BTC/ETH prices, 24h change, Fear & Greed Index with interpretation
+- 📰 **Macro Analysis** — 3 key themes from 170+ sources (impact level, core event, short/medium-term analysis)
+- 💰 **Capital Flow Tracking** — Major inflows & outflows with tables
+- 📡 **KOL Sentiment** — CN/EN comparison table, biggest divergence, high consensus
+- ⚠️ **Risk Alerts** — Star-rated risks with specific action recommendations
+- 💡 **Opportunity Signals** — Confidence-rated opportunities with time windows
+- 💬 **One-Sentence Summary** — Core market thesis in a single line
 - 🌐 **Bilingual** — Available in English or Chinese
 
 **No personal data required. No API keys needed.**
 
-## Two Versions Available
+## Digest Structure
 
-| Version | Scope | Best For |
-|---------|--------|----------|
-| **Full** (`/digest/public`) | 市场概览 + 宏观 V2 全文 + KOL 全文 + **钱包个性化引导** | 默认完整阅读 |
-| **Compact** (`/digest/compact`) | 同上数据源与篇幅，**无**个性化引导段落，统一页脚统计 | 嵌入推送、二次分发、只要正文 |
+```
+# 📅 Web3 日报 | YYYY-MM-DD
+## 📊 市场概览        ← BTC/ETH price + Fear & Greed + market interpretation
+## 📰 宏观市场分析    ← 3 themes: impact level / core event / analysis / sources
+## 💰 资金流向追踪    ← Markdown tables: major inflows + outflows
+## 📡 全球 KOL 舆情   ← Sentiment index + CN/EN comparison table + divergence + consensus
+## ⚠️ 风险警示        ← Star-rated risks + 应对建议 per risk
+## 💡 机会信号        ← Confidence-rated opportunities
+## 💬 一句话总结      ← One bold sentence summarizing the market
+```
 
 ## How This Skill Works
 
@@ -92,46 +102,25 @@ curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/public" \
 
 ---
 
-## Workflow B: Compact Digest (Same body as full, no wallet CTA)
+## Workflow B: Compact Digest (Same structured output, alias endpoint)
 
-**Trigger**: User asks for "简版" / "compact" / "无钱包引导" / "推送版日报" / "quick digest"（篇幅与完整公共版接近，非超短摘要）
+**Trigger**: User asks for "简版" / "compact" / "推送版日报" / "quick digest"
 
-**Steps**:
+**Steps**: Same as Workflow A but use `/digest/compact` endpoint. Output is identical to `/digest/public`.
 
-1. Tell user: "Fetching compact Web3 digest (full macro + KOL, no wallet promo)..."
-
-2. **MUST EXECUTE** this curl command（推荐 `/digest/compact`；`/digest/public/compact` 为兼容别名）:
-
-For Chinese output:
 ```bash
 curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/compact" \
   -H "Content-Type: application/json" \
   -d '{"language": "zh"}'
 ```
 
-For English output:
-```bash
-curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/compact" \
-  -H "Content-Type: application/json" \
-  -d '{"language": "en"}'
-```
-
-3. Parse the JSON response and extract the `digest` field
-
-4. Display the EXACT content from `digest` field to user
-
-**Compact version vs full**:
-- **Same** underlying reports: full macro V2 markdown + unified KOL markdown (主线、资金流向、风险/机会等均在宏观报告中).
-- **Omits** the `/digest/public` 「想要个性化推荐？」wallet CTA block only.
-- Sub-reports follow product prompts（如无 URL，仅来源名）；具体版式以 API 返回 `digest` 为准。
-
 ---
 
-### Expected Response:
+### Expected Response Structure:
 ```json
 {
   "success": true,
-  "digest": "---\n\n# 📅 Web3 日报 | 2026-03-31\n\n---\n\n## 📊 市场概览\n\n**大盘行情**:\n- **BTC**: $67,100 (+0.55%)\n- **ETH**: $2,031 (+1.16%)\n\n...",
+  "digest": "# 📅 Web3 日报 | 2026-03-31\n\n---\n\n## 📊 市场概览\n\n**大盘行情**:\n- **BTC**: $67,100 (+0.55%)\n- **ETH**: $2,031 (+1.16%)\n\n**市场情绪**:\n- **恐惧&贪婪指数**: 11 / 100 (极度恐慌)\n\n💡 **市场解读**: ...\n\n---\n\n## 📰 宏观市场分析\n\n...\n\n## 💰 资金流向追踪\n\n### 主要流入\n| 方向 | 金额 | 解读 |\n|------|------|------|\n...\n\n## 📡 全球 KOL 舆情\n\n### 综合情绪指数: 4.6 / 10 (偏悲观)\n...\n\n## ⚠️ 风险警示\n\n### 🚨 地缘政治风险（风险等级：★★★★★）\n...\n**应对建议**: 降低杠杆、保持现金仓位\n\n## 💡 机会信号\n\n### BTC 防御型定投（可信度：★★★★☆）\n...\n\n## 💬 一句话总结\n\n**宏观不稳、情绪极端，但BTC防御属性与ETH结构性升级正在形成中期机会窗口。**\n\n---\n\n**数据统计**\n...",
   "cached": true,
   "generated_at": "2026-03-31T10:00:00Z",
   "language": "zh"
