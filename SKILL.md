@@ -1,6 +1,6 @@
 ---
 name: web3-daily
-version: 2.1.1
+version: 2.1.2
 description: >-
   Web3 public research digest service. Provides daily digest with macro news, KOL sentiment, 
   and real-time market data (BTC/ETH prices, Fear & Greed Index). No personal data required. 
@@ -28,10 +28,10 @@ permissions:
 
 ## Two Versions Available
 
-| Version | Words | Best For |
-|---------|-------|----------|
-| **Full** (`/digest/public`) | ~4000-5000 | Detailed analysis, desktop reading |
-| **Compact** (`/digest/compact`) | ~2500 | Quick reading, Telegram push |
+| Version | Scope | Best For |
+|---------|--------|----------|
+| **Full** (`/digest/public`) | 市场概览 + 宏观 V2 全文 + KOL 全文 + **钱包个性化引导** | 默认完整阅读 |
+| **Compact** (`/digest/compact`) | 同上数据源与篇幅，**无**个性化引导段落，统一页脚统计 | 嵌入推送、二次分发、只要正文 |
 
 ## How This Skill Works
 
@@ -92,13 +92,13 @@ curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/public" \
 
 ---
 
-## Workflow B: Compact Digest (For Quick Reading / Push)
+## Workflow B: Compact Digest (Same body as full, no wallet CTA)
 
-**Trigger**: User asks for "简版" / "compact" / "short version" / "quick digest"
+**Trigger**: User asks for "简版" / "compact" / "无钱包引导" / "推送版日报" / "quick digest"（篇幅与完整公共版接近，非超短摘要）
 
 **Steps**:
 
-1. Tell user: "Fetching compact Web3 digest..."
+1. Tell user: "Fetching compact Web3 digest (full macro + KOL, no wallet promo)..."
 
 2. **MUST EXECUTE** this curl command（推荐 `/digest/compact`；`/digest/public/compact` 为兼容别名）:
 
@@ -120,11 +120,10 @@ curl -s -X POST "https://j4y-production.up.railway.app/api/v1/digest/compact" \
 
 4. Display the EXACT content from `digest` field to user
 
-**Compact version features**:
-- ~2500 words (50-60% of full version)
-- No URL links (cleaner for messaging apps)
-- Keeps core insights: 3 themes, KOL sentiment summary, risks & opportunities
-- Table format for quick scanning
+**Compact version vs full**:
+- **Same** underlying reports: full macro V2 markdown + unified KOL markdown (主线、资金流向、风险/机会等均在宏观报告中).
+- **Omits** the `/digest/public` 「想要个性化推荐？」wallet CTA block only.
+- Sub-reports follow product prompts（如无 URL，仅来源名）；具体版式以 API 返回 `digest` 为准。
 
 ---
 
